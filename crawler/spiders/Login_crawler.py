@@ -26,12 +26,13 @@ class NewSpider(BaseSpider):
     item_urls = []
     all_urls = []
     handle_httpstatus_list = [500]
-    login_user = 'admin'
-    login_pass = 'admin'
+    login_user = ''
+    login_pass = ''
     json_objects = []
     patterns_in_exploits = {}
     appendurl =[]
     href_link = []
+    excludelist = ['password', 'username', 'login', 'submit']    
 #    callback_function  = "after_login"
 
     """Stage 1 """   
@@ -173,11 +174,18 @@ class NewSpider(BaseSpider):
             name = str(name)
             value = str(value)
 
-            if (name != '-1'):
-              tmpUrlDict['url'] = url
-              tmpUrlDict['method'] = methodVal
-              tmpDict = self.dict_add(tmpDict, {name : value})
-              tmpUrlDict['params'] = tmpDict
+            excludeflag = False
+            for keyword in self.excludelist:
+              if (keyword in name.lower()):
+                excludeflag = True
+                break
+            if (not excludeflag):
+              if (name != '-1'):
+                tmpUrlDict['url'] = url
+                tmpUrlDict['method'] = methodVal
+                tmpDict = self.dict_add(tmpDict, {name : value})
+                tmpUrlDict['params'] = tmpDict
+
 
           if (bool(tmpUrlDict)):
             urlGlobalList.append(tmpUrlDict)
@@ -225,7 +233,13 @@ class NewSpider(BaseSpider):
             j = j+1
         
         for inp in input_box_name:
-          params[inp] = ""
+          excludeflag = False
+          for keyword in self.excludelist:
+            if (keyword in inp.lower()):
+              excludeflag = True
+              break
+          if (not excludeflag):
+             params[inp] = ""
 
         no_insert = 1 
         if len(params) > 0 and params.keys()[0] != "": 

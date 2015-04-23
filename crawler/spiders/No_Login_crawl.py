@@ -28,6 +28,7 @@ class NewSpider(BaseSpider):
     json_objects = []
     patterns_in_exploits = {}
     appendurl =[]
+    excludelist = ['password', 'username', 'login', 'submit']
 #    callback_function  = "after_login"
 
     """Stage 1 """   
@@ -166,12 +167,18 @@ class NewSpider(BaseSpider):
 
             name = str(name)
             value = str(value)
-
-            if (name != '-1'):
-              tmpUrlDict['url'] = url
-              tmpUrlDict['method'] = methodVal
-              tmpDict = self.dict_add(tmpDict, {name : value})
-              tmpUrlDict['params'] = tmpDict
+            excludeflag = False
+            for keyword in self.excludelist:
+              if (keyword in name.lower()):
+                excludeflag = True
+                break            
+                
+            if (not excludeflag):
+              if (name != '-1'):
+                tmpUrlDict['url'] = url
+                tmpUrlDict['method'] = methodVal
+                tmpDict = self.dict_add(tmpDict, {name : value})
+                tmpUrlDict['params'] = tmpDict
 
           if (bool(tmpUrlDict)):
             urlGlobalList.append(tmpUrlDict)
@@ -214,10 +221,14 @@ class NewSpider(BaseSpider):
           #  params{stem1[0]: stem1[1]}
             j = j+1
         
-#        print "Printing Input Boxes"
         for inp in input_box_name:
-  #        print inp
-          params[inp] = ""  
+          excludeflag = False
+          for keyword in self.excludelist:
+            if (keyword in inp.lower()):
+              excludeflag = True
+              break
+          if (not excludeflag):
+             params[inp] = ""
 
         print params  
         no_insert = 1 
