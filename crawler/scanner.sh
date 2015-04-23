@@ -12,6 +12,6 @@ echo '>>>>>>>>>>>>>>> Scanner.sh -- Stage 3 ended. <<<<<<<<<<<<<<<<<<<<<'
 echo '>>>>>>>>>>>>>>> Scanner.sh -- Stage 4 started. <<<<<<<<<<<<<<<<<<<<<'
 #Stage 4
 rm pycode/*
-pyhton3 stage4_selenium_scripts.py
+python stage4_selenium_scripts.py
 
 echo '>>>>>>>>>>>>>>> Scanner.sh ended execution. <<<<<<<<<<<<<<<<<<<<<'

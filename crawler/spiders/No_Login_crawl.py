@@ -215,9 +215,9 @@ class NewSpider(BaseSpider):
             j = j+1
         
 #        print "Printing Input Boxes"
- #       for inp in input_box_name:
+        for inp in input_box_name:
   #        print inp
-   #       params[inp] = ""  
+          params[inp] = ""  
 
         print params  
         no_insert = 1 

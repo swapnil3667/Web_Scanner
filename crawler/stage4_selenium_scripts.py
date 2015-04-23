@@ -85,7 +85,7 @@ def MakeFile(baseurl1,userid,passwordid,atkUrl, loginflag):
 	return code
 
 #ret = MakeFile()
-f = open("credentials.json", 'r').read();
+f = open("json/credentials.json", 'r').read();
 credential = json.loads(f)
 baseurl = ""
 userid = ""
@@ -99,7 +99,7 @@ for a in credential:
 	if a["login"] != "": 
 		loginflag =  False
 
-f = open("Stage3_valid_exploits.json", 'r').read();	
+f = open("json/Stage3_valid_exploits.json", 'r').read();	
 payload_data = json.loads(f)
 payloads = payload_data["exploits"]
 
