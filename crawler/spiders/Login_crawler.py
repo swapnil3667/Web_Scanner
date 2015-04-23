@@ -56,7 +56,7 @@ class NewSpider(BaseSpider):
        tmpparam["url"] =  self.start_urls[0]
        tmpparam["login"] = ""
        credentials.append(tmpparam)
-       f = open("credentials.json", 'w')
+       f = open("json/credentials.json", 'w')
        f.write(json.dumps(credentials,indent= 4, sort_keys = True))
        f.close()
 
@@ -331,11 +331,11 @@ class NewSpider(BaseSpider):
         inj["params"] = p1
         inj_points.insert(0, inj)
 
-      f = open("Stage1_json_objects.json", 'w')
+      f = open("json/Stage1_json_objects.json", 'w')
 #      jsonString = json.dumps(jsonObj)
       f.write(json.dumps(inj_points,indent= 4, sort_keys = True))
       f.close()
-      self.stage2_exploit_generation("Stage1_json_objects.json","json/exploitsUdt.json","Stage2_json_objects.json")  
+      self.stage2_exploit_generation("json/Stage1_json_objects.json","json/exploitsUdt.json","json/Stage2_json_objects.json")  
   
 
     def stage2_exploit_generation(self,stage1_injection_file, stage2_in_exploitsFile, stage2_Out_JsonFile):

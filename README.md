@@ -1,3 +1,7 @@
 #Scanner 
-- More scrapy tutorial can be found here http://doc.scrapy.org/en/latest/intro/tutorial.html
-- Helpful library when dealing with login in multiple sites: loginform https://github.com/scrapy/loginform 
+
+#run scanner with login: from crawler folder.
+sh scanner.sh login app-data/app1.txt
+
+#run scanner with no login: from crawler folder.
+sh scanner.sh nologin app-data/app3.txt
