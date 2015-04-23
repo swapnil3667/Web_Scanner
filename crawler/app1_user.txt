@@ -1,0 +1,5 @@
+https://app1.com/users/login.php
+app1.com
+https://app1.com/
+scanner1
+scanner1

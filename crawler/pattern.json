@@ -1,0 +1,11 @@
+{
+	"pattern" : [
+		"root:/root",
+		"root:/root:/bin",
+		"/usr/sbin/nologin",
+		"PHP Version",
+		"Vulnerable",
+		"vulnerable",
+		"You have sucessfully read the content of this file"
+	]
+}
