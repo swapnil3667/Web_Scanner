@@ -124,11 +124,5 @@ for exp in payloads:
 	  f = open("pycode/pycode" + str(i) + ".py", 'w')
 	  f.write(ret)
 	  i = i+1
-	  print 'Execution completed. '
 
-'''
-print (ret)
-f = open("pycode.py", 'w')
-f.write(ret)
-print 'Execution completed. '
-'''
+print 'Execution completed. Stage4-Selenium Scripts generated.'
